@@ -319,14 +319,15 @@ PyMODINIT_FUNC
 init_cache(void) {
     PyObject *m;
     m = Py_InitModule("_cache", CacheMethods);
+
     CacheException = PyErr_NewException("_cache.error", NULL, NULL);
     Py_INCREF(CacheException);
+    PyModule_AddObject(m, "error", CacheException);
 
     INOUT_type.tp_new = PyType_GenericNew;
     if (PyType_Ready(&INOUT_type) < 0)
         return;
     Py_INCREF(&INOUT_type);
-
-    PyModule_AddObject(m, "error", CacheException);
+    PyModule_AddObject(m, "INOUT", (PyObject *)&INOUT_type);
 }
 

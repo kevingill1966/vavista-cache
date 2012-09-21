@@ -1,9 +1,6 @@
 import _cache as _mumps
 
-#INOUT=_mumps.INOUT
-#mexec=_mumps.mexec
-#mget=_mumps.mget
-#mset=_mumps.mset
+INOUT=_mumps.INOUT
 
 def _cf_to_list(cf):
     # Convert the closed form value to a list.
